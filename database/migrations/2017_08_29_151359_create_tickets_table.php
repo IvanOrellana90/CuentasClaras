@@ -23,6 +23,15 @@ class CreateTicketsTable extends Migration
             $table->integer('user_id');
             $table->timestamps();
         });
+
+        Schema::create('ticket_user', function (Blueprint $table) {
+            $table->integer('ticket_id');
+            $table->integer('user_id');
+            $table->integer('amount');
+            $table->primary(['user_id', 'ticket_id']);
+            $table->boolean('active')->default(false);
+            $table->timestamps();
+        });
     }
 
     /**

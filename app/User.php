@@ -36,4 +36,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Group');
     }
+
+    public function ticketsBelong()
+    {
+        return $this->belongsToMany('App\Ticket','ticket_user')->withPivot('ticket_id', 'user_id', 'active')->withTimestamps();
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany('App\Ticket');
+    }
 }

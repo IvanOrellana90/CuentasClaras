@@ -11,6 +11,7 @@
 @yield('js')
 <!-- AdminLTE App -->
 <script src="{{ URL::to('dist/js/adminlte.min.js') }}"></script>
+<script src="{{ URL::to('js/default.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::to('dist/js/demo.js') }}"></script>
 <script>
