@@ -55,7 +55,7 @@
                                                 <label>Nombre
                                                     <small>(*)</small>
                                                 </label>
-                                                <input name="name" type="text" required class="form-control">
+                                                <input name="name" type="text"  class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-10 col-sm-offset-1">
@@ -71,7 +71,7 @@
                                                 <label>Monto
                                                     <small>(*)</small>
                                                 </label>
-                                                <input type="number" name="amount" type="text" required class="form-control">
+                                                <input type="number" id="amount" name="amount" value="0" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-10 col-sm-offset-1">
@@ -79,9 +79,10 @@
                                                 <label>Fecha
                                                     <small>(*)</small>
                                                 </label>
-                                                <input type="date" name="date" required class="form-control">
+                                                <input type="date" name="date"  class="form-control">
                                             </div>
                                         </div>
+                                        <!--
                                         <div class="col-sm-10 col-sm-offset-1">
                                             <div class="form-group">
                                                 <label>Boleta
@@ -89,6 +90,7 @@
                                                 <input type="file" name="img" class="form-control" accept='image/*'>
                                             </div>
                                         </div>
+                                        -->
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="account">
@@ -99,8 +101,8 @@
                                                 <label class="col-sm-2 control-label">Grupo
                                                 </label>
                                                 <div class="col-sm-10">
-                                                    <select required name="group" class="form-control select2 group" data-placeholder="Grupo.."  style="width: 100%">
-                                                        <option value="0">Seleccione...</option>
+                                                    <select  name="group" class="form-control select2 group" data-placeholder="Grupo.."  style="width: 100%">
+                                                        <option selected value="0">Seleccione...</option>
                                                         @foreach($user->groups as $groups)
                                                             <option value="{{ $groups->id }}">{{ $groups->name }}</option>
                                                         @endforeach
@@ -113,24 +115,6 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-sm-10 col-sm-offset-1">
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-
-                                                <div class="col-sm-10">
-                                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="tab-pane" id="address">
                                     <div class="row">

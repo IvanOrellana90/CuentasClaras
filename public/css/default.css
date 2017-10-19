@@ -18,3 +18,8 @@ li > a.btn.btn-wd, .btn-wd {
     font-size: 17px;
     font-weight: 700;
 }
+.img-circle.imgMontos {
+
+    max-height: 60px;
+
+}

@@ -27,7 +27,6 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title">Mis Boletas</h3>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool btn-add" data-toggle="modal" data-target="#modal-default">
             <i class="fa fa-plus-square"></i>
@@ -41,7 +40,7 @@
           <tr>
             <th  data-column-id="nombre">Nombre</th>
             <th  data-column-id="creador">Creador</th>
-            <th  data-column-id="fecha" data-order="desc">Fecha</th>
+            <th  data-column-id="fecha" data-order="asc">Fecha</th>
             <th  data-column-id="total">Total</th>
             <th  data-column-id="adjuntto">Adjunto</th>
           </tr>
@@ -50,9 +49,9 @@
           @foreach($user->tickets as $tickets)
             <tr>
               <td>{{ $tickets->name }}</td>
-              <td>{{ $tickets->description }}</td>
               <td>{{ $tickets->user->name." ".$tickets->user->lastName }}</td>
-              <td> 4</td>
+              <td>{{ $tickets->date }}</td>
+              <td>{{ $tickets->amount }}</td>
               <td>X</td>
             </tr>
           </tbody>

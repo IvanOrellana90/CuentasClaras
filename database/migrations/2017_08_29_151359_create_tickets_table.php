@@ -19,7 +19,7 @@ class CreateTicketsTable extends Migration
             $table->text('description')->nullable();
             $table->date('date');
             $table->string('amount');
-            $table->string('img');
+            $table->string('img')->nullable();;
             $table->integer('user_id');
             $table->timestamps();
         });

@@ -6,6 +6,7 @@ use App\Group;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Ticket;
 
@@ -33,25 +34,37 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'form-email' => 'email|required|unique:users,email',
-            'form-password' => 'required',
-            'form-name' => 'required',
-            'form-lastName' => 'required'
+            'name' => 'required',
+            'amount' => 'required',
+            'date' => 'required',
+            'group' => 'required'
         ]);
 
         $mensaje = "OPS! Ocurrio un problema!";
         $class = "alert-danger";
 
-        $user = new User();
+        $ticket = new Ticket();
+        $montoTotal = 0;
 
-        $user->name = $request['form-name'];
-        $user->password = Hash::make($request['form-password']);
-        $user->email = $request['form-email'];
-        $user->lastName = $request['form-lastName'];
-        $user->avatar = "avatar". rand(1,10);
+        foreach ($request['montoUsuario'] as $monto) {
+            $montoTotal += $monto;
+        }
 
-        if($user->save()) {
-            $mensaje = "Usuario: ".$user->name." ".$user->lastName." ingresado correctamente!";
+        if($montoTotal != $request['amount'])
+        {
+            $mensaje = "OPS! El monto de la boleta no cuadra con el de los usuarios!";
+            return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
+        }
+
+        $ticket->user_id = Auth::id();
+        $ticket->name = $request['name'];
+        $ticket->description = $request['description'];
+        $ticket->date = $request['date'];
+        $ticket->amount = $request['amount'];
+        $ticket->img = $request['img'];
+
+        if($ticket->save()) {
+            $mensaje = "Boleta: ".$ticket->name." ingresado correctamente!";
             $class = "alert-success";
         }
 
