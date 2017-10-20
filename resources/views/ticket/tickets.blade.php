@@ -44,7 +44,7 @@
             <th  data-column-id="creador" data-align='center' data-header-align="center" data-formatter="creador">Creador</th>
             <th  data-column-id="fecha" data-align='center' data-header-align="center" data-order="asc">Fecha</th>
             <th  data-column-id="total" data-align='center' data-header-align="center" data-type="numeric">Total</th>
-            <th  data-column-id="adjunto" data-align='center' data-header-align="center">Adjunto</th>
+            <th  data-column-id="grupo" data-align='center' data-header-align="center" data-formatter="grupo">Grupo</th>
             <th  data-column-id="estado" data-align='center' data-header-align="center" data-formatter="estado">Estado</th>
             <th  data-column-id="acciones" data-align='center' data-header-align="center" data-formatter="acciones" data-sortable="false">Acciones</th>
           </tr>
@@ -58,7 +58,7 @@
               <td>{{ $tickets->user->name." ".$tickets->user->lastName }}</td>
               <td>{{ $tickets->date }}</td>
               <td>{{ $tickets->amount }}</td>
-              <td>X</td>
+              <td>{{ $tickets->group->name }}</td>
             </tr>
           </tbody>
           @endforeach
@@ -116,6 +116,10 @@
           "creador": function(column, row)
           {
               return '<strong>' + row.creador + '</strong> <br> <div class="italicTabla"><i>' + row.email + '</i></div> ';
+          },
+          "grupo": function(column, row)
+          {
+              return '<strong>' + row.grupo + '</strong>';
           }
       }
       }).on("loaded.rs.jquery.bootgrid", function()
@@ -123,10 +127,21 @@
         /* Executes after data is loaded and rendered */
           grid.find(".command-edit").on("click", function(e)
           {
-              alert("You pressed edit on row: " + $(this).data("row-id"));
+
           }).end().find(".command-delete").on("click", function(e)
           {
-              alert("You pressed delete on row: " + $(this).data("row-id"));
+              swal({
+                  title: 'Estas seguro?',
+                  text: "Esta boleta se eliminara permanentemente!",
+                  type: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Eliminar',
+                  cancelButtonText: 'Cancelar',
+              }).then(function () {
+                  window.location.href='{{ route('group.destroy') }}';
+              })
           });
       });
     $('.select2').select2();

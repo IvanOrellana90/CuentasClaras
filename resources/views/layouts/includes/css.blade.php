@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="{{ URL::to('bower_components/font-awesome/css/font-awesome.min.css') }}">
 <!-- Ionicons -->
 <link rel="stylesheet" href="{{ URL::to('bower_components/Ionicons/css/ionicons.min.css') }}">
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="{{ URL::to('bower_components/sweetalert2/dist/sweetalert2.min.css') }}">
 <!-- Extras -->
 <link rel="stylesheet" href="{{ URL::to('bower_components/multi-step/css.css') }}">
 <link rel="stylesheet" href="{{ URL::to('bower_components/steps/assets/css/paper-bootstrap-wizard.css') }}" />

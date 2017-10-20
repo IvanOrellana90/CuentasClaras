@@ -57,6 +57,7 @@ class TicketController extends Controller
         }
 
         $ticket->user_id = Auth::id();
+        $ticket->group_id = $request['group'];
         $ticket->name = $request['name'];
         $ticket->description = $request['description'];
         $ticket->date = $request['date'];
@@ -91,16 +92,15 @@ class TicketController extends Controller
 
     public function destroy($id)
     {
-        $user = User::where('id', $id)->first();
+        $ticket = Ticket::where('id', $id)->first();
 
-        $nombre = $user->name;
-        $apellido = $user->lastName;
+        $nombre = $ticket->name;
 
         $mensaje = "OPS! Ocurrio un problema!";
         $class = "alert-danger";
 
-        if($user->delete()) {
-            $mensaje = "Usuario: ".$nombre." ".$apellido." eliminado correctamente!";
+        if($ticket->delete()) {
+            $mensaje = "Boleta: ".$nombre." eliminada correctamente!";
             $class = "alert-success";
         }
 

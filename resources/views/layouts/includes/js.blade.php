@@ -6,6 +6,8 @@
 <script src="{{ URL::to('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ URL::to('bower_components/fastclick/lib/fastclick.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ URL::to('bower_components/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 <!-- Extras -->
 <script src="{{ URL::to('bower_components/multi-step/js.js') }}"></script>
 @yield('js')

@@ -70,10 +70,16 @@ class GroupController extends Controller
     {
         $group = Group::where('id', $id)->first();
 
-        $nombre = $group->name;
-
         $mensaje = "OPS! Ocurrio un problema!";
         $class = "alert-danger";
+
+        if($group->user->id != Auth::id())
+        {
+            $mensaje = "Ops! No puedes eliminar un grupo de otro usuario!";
+            return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
+        }
+
+        $nombre = $group->name;
 
         if($group->delete()) {
             $mensaje = "Grupo: ".$nombre." eliminado correctamente!";
