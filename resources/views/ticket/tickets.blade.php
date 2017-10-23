@@ -50,7 +50,7 @@
             <tr>
                 <td>{{ $tickets->id }}</td>
                 <td>{{ $tickets->user->email }}</td>
-                <td>{{ route('user.destroy', $tickets->id) }}</td>
+                <td>{{ route('ticket.destroy', $tickets->id) }}</td>
                 <td>{{ $tickets->name }}</td>
                 <td>{{ $tickets->user->name." ".$tickets->user->lastName }}</td>
                 <td>{{ $tickets->date }}</td>

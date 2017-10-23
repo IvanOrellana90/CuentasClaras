@@ -87,18 +87,18 @@ var gridGroup = $("#table-groups").bootgrid({
             return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-pencil\"></span></button> " +
                 "<a href=\"" + row.borrarLink + "\" type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash-o\"></span></a>";
         },
-        "estado": function(column, row)
-        {
-            return "<span class=\"label label-warning\">Pendiente</span>";
-        },
         "creador": function(column, row)
         {
             return '<strong>' + row.creador + '</strong> <br> <div class="italicTabla"><i>' + row.email + '</i></div> ';
         },
-        "grupo": function(column, row)
+        "total": function(column, row)
         {
-            return '<strong>' + row.grupo + '</strong>';
-        }
+            if(row.total == 0) {
+                return '<strong class="text-green">' + row.total + ' <i class="fa fa-check"></i></strong> ';
+            } else {
+                return '<strong class="text-red">' + row.total + ' <i class="fa fa-remove"></i></strong> ';
+            }
+        },
     }
 }).on("loaded.rs.jquery.bootgrid", function()
 {
@@ -113,7 +113,7 @@ var gridGroup = $("#table-groups").bootgrid({
 
         swal({
             title: 'Estas seguro?',
-            text: "Esta boleta se eliminara permanentemente!",
+            text: "Este grupo se eliminara permanentemente!",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

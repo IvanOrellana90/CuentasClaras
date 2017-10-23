@@ -33,8 +33,9 @@ class GroupController extends Controller
             'description' => 'required'
         ]);
 
-        $mensaje = "OPS! Ocurrio un problema!";
-        $class = "alert-danger";
+        $titulo = "OPS!";
+        $mensaje = "Ocurrio un problema!";
+        $class = "error";
 
         $group = new Group();
 
@@ -43,23 +44,29 @@ class GroupController extends Controller
         $group->description = $request['description'];
 
         if ($group->save()) {
-            $group->users()->sync($request['users']);
+            $group->users()->attach($request['users']);
+            $group->users()->attach($group->user_id);
+
+            $titulo = "Excelente!";
+            $mensaje = "Grupo: ".$group->name." ingresado correctamente";
+            $class = "success";
         }
 
-        return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
+        return redirect()->back()->with(['message' => $mensaje, 'class' => $class, 'titulo' => $titulo]);
     }
 
     public function update(Request $request, $id)
     {
-        $mensaje = "OPS! Ocurrio un problema!";
-        $class = "alert-danger";
+        $titulo = "OPS!";
+        $mensaje = "Ocurrio un problema!";
+        $class = "error";
 
         $group =  Group::where('id', $id)->first();;
         $input = $request->all();
 
         if($group->fill($input)->save()) {
             $mensaje = "Grupo: ".$group->name." editado correctamente!";
-            $class = "alert-success";
+            $class = "success";
         }
 
         return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
@@ -70,22 +77,24 @@ class GroupController extends Controller
     {
         $group = Group::where('id', $id)->first();
 
-        $mensaje = "OPS! Ocurrio un problema!";
-        $class = "alert-danger";
+        $titulo = "OPS!";
+        $mensaje = "Ocurrio un problema!";
+        $class = "error";
 
         if($group->user->id != Auth::id())
         {
-            $mensaje = "Ops! No puedes eliminar un grupo de otro usuario!";
+            $mensaje = "No puedes eliminar un grupo de otro usuario!";
             return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
         }
 
         $nombre = $group->name;
 
         if($group->delete()) {
+            $titulo = "Excelente!";
             $mensaje = "Grupo: ".$nombre." eliminado correctamente!";
-            $class = "alert-success";
+            $class = "success";
         }
 
-        return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
+        return redirect()->back()->with(['message' => $mensaje, 'class' => $class, 'titulo' => $titulo]);
     }
 }
