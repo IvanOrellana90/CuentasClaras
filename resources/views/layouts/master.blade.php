@@ -42,6 +42,7 @@
 <!-- ./wrapper -->
 
 @include('layouts.includes.js')
+@include('layouts.includes.mensajes')
 
 </body>
 </html>

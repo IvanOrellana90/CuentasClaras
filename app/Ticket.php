@@ -8,7 +8,7 @@ class Ticket extends Model
 {
     public function users()
     {
-        return $this->belongsToMany('App\User','ticket_user')->withPivot('ticket_id', 'user_id', 'active')->withTimestamps();
+        return $this->belongsToMany('App\User','ticket_user')->withPivot('ticket_id', 'user_id', 'active', 'amount')->withTimestamps();
     }
 
     public function user()

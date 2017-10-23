@@ -17,7 +17,7 @@
                         $(".formMontos").remove();
 
                         insideForm = "";
-                        monto = Math.round($("#amount").val()/data.length);
+                        monto = Math.round($("#amounTicket").val()/data.length);
 
                         for(var i=0;i<data.length;i++){
                             insideForm+=
@@ -29,7 +29,8 @@
                                             '</div>' +
                                         '</label>' +
                                         '<div class="col-sm-10">' +
-                                            '<input type="text" class="form-control" name="montoUsuario[]" value="'+monto+'" placeholder="Monto">' +
+                                            '<input type="text" class="form-control" name="amounts[]" value="'+monto+'" placeholder="Monto">' +
+                                            '<input type="hidden"  name="users[]" value="'+ data[i].id+ '">' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>';

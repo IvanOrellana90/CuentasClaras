@@ -71,7 +71,7 @@
                                                 <label>Monto
                                                     <small>(*)</small>
                                                 </label>
-                                                <input type="number" id="amount" name="amount" value="0" class="form-control">
+                                                <input type="number" id="amounTicket" name="amounTicket" value="0" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-10 col-sm-offset-1">

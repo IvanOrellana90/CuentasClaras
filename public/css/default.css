@@ -25,3 +25,7 @@ li > a.btn.btn-wd, .btn-wd {
 .italicTabla {
     font-size: 12px;
 }
+.actionPlus{
+    height: 40px;
+    float: right;
+}

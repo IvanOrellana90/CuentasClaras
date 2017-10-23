@@ -84,15 +84,6 @@
     <script src="{{ URL::to('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
     <script>
-        $("#table-groups").bootgrid({
-            labels: {
-                noResults: "No se econtraron resultados",
-                search: "Buscar",
-                infos: ""
-            },
-            rowCount: -1,
-            navigation: 1
-        });
         $('.select2').select2()
     </script>
 @endsection

@@ -35,25 +35,26 @@ class TicketController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'amount' => 'required',
-            'date' => 'required',
-            'group' => 'required'
+            'amounTicket' => 'required|numeric',
+            'date' => 'required|date',
+            'group' => 'required|exists:groups,id'
         ]);
 
-        $mensaje = "OPS! Ocurrio un problema!";
-        $class = "alert-danger";
+        $titulo = "OPS!";
+        $mensaje = "Ocurrio un problema!";
+        $class = "error";
 
         $ticket = new Ticket();
         $montoTotal = 0;
 
-        foreach ($request['montoUsuario'] as $monto) {
+        foreach ($request['amounts'] as $monto) {
             $montoTotal += $monto;
         }
 
-        if($montoTotal != $request['amount'])
+        if($montoTotal != $request['amounTicket'])
         {
-            $mensaje = "OPS! El monto de la boleta no cuadra con el de los usuarios!";
-            return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
+            $mensaje = "El monto de la boleta no cuadra con el de los usuarios";
+            return redirect()->back()->with(['message' => $mensaje, 'class' => $class, 'titulo' => $titulo]);
         }
 
         $ticket->user_id = Auth::id();
@@ -61,32 +62,51 @@ class TicketController extends Controller
         $ticket->name = $request['name'];
         $ticket->description = $request['description'];
         $ticket->date = $request['date'];
-        $ticket->amount = $request['amount'];
+        $ticket->amount = $request['amounTicket'];
         $ticket->img = $request['img'];
 
+        $users = $request['users'];
+        $amount = $request['amounts'];
+
+        $syncData = [];
+
+            for($i = 0; $i < count($users); $i++) {
+                if($users[$i] == $ticket->user_id)
+                    $syncData[$users[$i]] = ['amount' => $amount[$i], 'active' => 1];
+                else
+                    $syncData[$users[$i]] = ['amount' => $amount[$i], 'active' => 0];
+            }
+
+
         if($ticket->save()) {
-            $mensaje = "Boleta: ".$ticket->name." ingresado correctamente!";
-            $class = "alert-success";
+
+            $ticket->users()->attach($syncData);
+
+            $titulo = "Excelente!";
+            $mensaje = "Boleta: ".$ticket->name." ingresada correctamente";
+            $class = "success";
         }
 
-        return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
+        return redirect()->back()->with(['message' => $mensaje, 'class' => $class, 'titulo' => $titulo]);
 
     }
 
     public function update(Request $request, $id)
     {
-        $mensaje = "OPS! Ocurrio un problema!";
-        $class = "alert-danger";
+        $titulo = "OPS!";
+        $mensaje = "Ocurrio un problema!";
+        $class = "error";
 
         $user =  User::where('id', $id)->first();;
         $input = $request->all();
 
         if($user->fill($input)->save()) {
-            $mensaje = "Usuario: ".$user->name." ".$user->lastName." editado correctamente!";
+            $titulo = "Excelente!";
+            $mensaje = "Usuario: ".$user->name." ".$user->lastName." editado correctamente";
             $class = "alert-success";
         }
 
-        return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
+        return redirect()->back()->with(['message' => $mensaje, 'class' => $class, 'titulo' => $titulo]);
 
     }
 
@@ -94,17 +114,25 @@ class TicketController extends Controller
     {
         $ticket = Ticket::where('id', $id)->first();
 
-        $nombre = $ticket->name;
+        $titulo = "OPS!";
+        $mensaje = "Ocurrio un problema!";
+        $class = "error";
 
-        $mensaje = "OPS! Ocurrio un problema!";
-        $class = "alert-danger";
-
-        if($ticket->delete()) {
-            $mensaje = "Boleta: ".$nombre." eliminada correctamente!";
-            $class = "alert-success";
+        if($ticket->user->id != Auth::id())
+        {
+            $mensaje = "No puedes eliminar una boleta que no es tuya";
+            return redirect()->back()->with(['message' => $mensaje, 'class' => $class, 'titulo' => $titulo]);
         }
 
-        return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
+        $nombre = $ticket->name;
+
+        if($ticket->delete()) {
+            $titulo = "Excelente!";
+            $mensaje = "Boleta: ".$nombre." eliminada correctamente";
+            $class = "success";
+        }
+
+        return redirect()->back()->with(['message' => $mensaje, 'class' => $class, 'titulo' => $titulo]);
     }
 
 
