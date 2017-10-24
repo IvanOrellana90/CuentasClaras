@@ -43,5 +43,6 @@ class CreateTicketsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tickets');
+        Schema::dropIfExists('ticket_user');
     }
 }

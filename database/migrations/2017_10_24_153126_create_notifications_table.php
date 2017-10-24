@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupsTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,12 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('description')->nullable();
             $table->integer('user_id');
-            $table->timestamps();
-        });
-
-        Schema::create('group_user', function (Blueprint $table) {
-            $table->integer('group_id');
-            $table->integer('user_id');
-            $table->primary(['user_id', 'group_id']);
+            $table->string('action');
+            $table->string('item');
+            $table->integer('item_id');
             $table->boolean('active')->default(false);
             $table->timestamps();
         });
@@ -37,7 +31,6 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
-        Schema::dropIfExists('group_user');
+        Schema::dropIfExists('notifications');
     }
 }

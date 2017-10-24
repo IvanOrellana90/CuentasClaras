@@ -125,3 +125,66 @@ var gridGroup = $("#table-groups").bootgrid({
         })
     });
 });
+
+var gridBill = $("#table-bill").bootgrid({
+    templates: {
+        header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}}\"><div class=\"row\"><div class=\"col-sm-12 actionBar\">" +
+        "<p class=\"{{css.search}}\"></p>" +
+        "</div></div></div>"
+    },
+    labels: {
+        noResults: "No se econtraron resultados",
+        search: "Buscar",
+        infos: ""
+    },
+    multiSort: true,
+    rowCount: -1,
+    navigation: 1,
+    formatters: {
+        "acciones": function(column, row)
+        {
+            return "<button type=\"button\" class=\"btn btn-xs btn-default command-edit\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-pencil\"></span></button> " +
+                "<a href=\"" + row.borrarLink + "\" type=\"button\" class=\"btn btn-xs btn-default command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash-o\"></span></a>";
+        },
+        "creador": function(column, row)
+        {
+            return '<strong>' + row.creador + '</strong> <br> <div class="italicTabla"><i>' + row.email + '</i></div> ';
+        },
+        "estado": function(column, row)
+        {
+            if(row.estado == 0) {
+                return "<span class=\"label label-danger\">Pendiente</span>";
+            } else {
+                return "<span class=\"label label-success\">Cancelado</span>";
+            }
+        },
+        "grupo": function(column, row)
+        {
+            return '<strong>' + row.grupo + '</strong>';
+        },
+    }
+}).on("loaded.rs.jquery.bootgrid", function()
+{
+    /* Executes after data is loaded and rendered */
+    gridGroup.find(".command-edit").on("click", function(e)
+    {
+
+    }).end().find(".command-delete").on("click", function(e)
+    {
+        e.preventDefault();
+        var link = $(this).attr('href');
+
+        swal({
+            title: 'Estas seguro?',
+            text: "Este grupo se eliminara permanentemente!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+        }).then(function () {
+            window.location.href = link;
+        })
+    });
+});

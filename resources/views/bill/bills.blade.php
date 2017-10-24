@@ -6,16 +6,14 @@
 
 @section('main')
 
-    @include('group.new-group-modal')
-
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Grupos
+            Deudas
             <small>recuerda cancelar tus deudas!</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="{{ route('welcome') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li><a href="#">Examples</a></li>
             <li class="active">Blank page</li>
         </ol>
@@ -28,29 +26,34 @@
         <div class="box">
             <!-- /.box-header -->
             <div class="box-body table-responsive">
-                <table id="table-groups" class="table table-bordered table-hover">
+                <table id="table-bill" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th  data-column-id="id" data-visible="false">ID</th>
                         <th  data-column-id="email" data-visible="false">Email</th>
-                        <th  data-column-id="borrarLink" data-visible="false">BorrarLink</th>
-                        <th  data-column-id="nombre" data-align='center' data-header-align="center" data-order="desc">Nombre</th>
-                        <th  data-column-id="creador" data-align='center' data-header-align="center" data-formatter="creador" >Creador</th>
-                        <th  data-column-id="total" data-align='center' data-header-align="center" data-formatter="total">Deuda</th>
+                        <th  data-column-id="nombre" data-align='center' data-header-align="center">Nombre</th>
+                        <th  data-column-id="creador" data-align='center' data-header-align="center" data-formatter="creador">Responsable</th>
+                        <th  data-column-id="fecha" data-align='center' data-header-align="center" data-order="asc">Fecha</th>
+                        <th  data-column-id="grupo" data-align='center' data-header-align="center" data-formatter="grupo">Grupo</th>
+                        <th  data-column-id="total" data-align='center' data-header-align="center" data-type="numeric">Total</th>
+                        <th  data-column-id="estado" data-align='center' data-header-align="center" data-formatter="estado">Estado</th>
                         <th  data-column-id="acciones" data-align='center' data-header-align="center" data-formatter="acciones" data-sortable="false">Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($user->groupsBelong as $group)
+
+                    <!-- Tabla de boletas a las que pertenece el Uusuario -->
+                    @foreach($bills as $bill)
                         <tr>
-                            <td>{{ $group->id }}</td>
-                            <td>{{ $group->user->email }}</td>
-                            <td>{{ route('group.destroy', $group->id) }}</td>
-                            <td>{{ $group->name }}</td>
-                            <td>{{ $group->user->name." ".$group->user->lastName }}</td>
-                            <td>{{ number_format(pasivosGrupo($group->id) - activosGrupo($group->id)) }}</td>
+                            <td>{{ $bill->user->email }}</td>
+                            <td>{{ $bill->name }}</td>
+                            <td>{{ $bill->user->name ." ". $bill->user->lastName }}</td>
+                            <td>{{ $bill->date }}</td>
+                            <td>{{ $bill->group->name }}</td>
+                            <td>{{ $bill->amount }}</td>
+                            <td>{{ $bill->active }}</td>
                         </tr>
                     @endforeach
+
                     </tbody>
                 </table>
             </div>

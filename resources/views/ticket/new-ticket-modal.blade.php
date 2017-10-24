@@ -103,9 +103,6 @@
                                                 <div class="col-sm-10">
                                                     <select  name="group" class="form-control select2 group" data-placeholder="Grupo.."  style="width: 100%">
                                                         <option selected value="0">Seleccione...</option>
-                                                        @foreach($user->groups as $groups)
-                                                            <option value="{{ $groups->id }}">{{ $groups->name }}</option>
-                                                        @endforeach
                                                         @foreach($user->groupsBelong as $groups)
                                                             <option value="{{ $groups->id }}">{{ $groups->name }}</option>
                                                         @endforeach

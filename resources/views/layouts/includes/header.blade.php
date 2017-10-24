@@ -69,35 +69,51 @@
           </ul>
         </li>
         <!-- Tasks: style can be found in dropdown.less -->
-        <li class="dropdown tasks-menu">
+        <li class="dropdown messages-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-flag-o"></i>
-            <span class="label label-danger">9</span>
+            <i class="fa fa-user-o"></i>
+            @if(count($bills) > 0)
+              <span class="label label-danger">{{ count($bills) }}</span>
+            @else
+              <span class="label label-danger"></span>
+            @endif
           </a>
           <ul class="dropdown-menu">
-            <li class="header">You have 9 tasks</li>
+            @if(count($bills) > 1)
+              <li class="header text-center">Tienes {{ count($bills) }} deudas pendientes</li>
+            @elseif(count($bills) == 1)
+              <li class="header text-center">Tienes {{ count($bills) }} deuda pendiente</li>
+            @else
+              <li class="header">No tienes deudas pendientes</li>
+            @endif
             <li>
               <!-- inner menu: contains the actual data -->
-              <ul class="menu">
-                <li><!-- Task item -->
-                  <a href="#">
-                    <h3>
-                      Design some buttons
-                      <small class="pull-right">20%</small>
-                    </h3>
-                    <div class="progress xs">
-                      <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                           aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                        <span class="sr-only">20% Complete</span>
+              @foreach($bills as $bill)
+                <ul class="menu">
+                  <li><!-- start message -->
+                    <div class="row">
+                      <div class="col-xs-4 text-center">
+                          <h5 class="text-red">{{ number_format($bill->amount) }}</h5>
+                      </div>
+                      <div class="col-xs-6">
+                        <a href="#">
+                          <h6 class="margin-bottom-none">
+                            {{ $bill->group->name }}
+                          </h6>
+                        </a>
+                        <small>{{ $bill->name }}</small>
+                      </div>
+                      <div class="col-xs-2 text-center">
+                        <a href="#" class="text-green"><i class="fa fa-check"></i></a>
                       </div>
                     </div>
-                  </a>
-                </li>
-                <!-- end task item -->
-              </ul>
+                  </li>
+                  <!-- end message -->
+                </ul>
+              @endforeach
             </li>
             <li class="footer">
-              <a href="#">View all tasks</a>
+              <a href="{{ route('bills') }}">Ver mis deudas</a>
             </li>
           </ul>
         </li>

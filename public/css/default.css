@@ -29,3 +29,7 @@ li > a.btn.btn-wd, .btn-wd {
     height: 40px;
     float: right;
 }
+.col-xs-2.text-center {
+    padding-top: 10px;
+    padding-left: 0px;
+}

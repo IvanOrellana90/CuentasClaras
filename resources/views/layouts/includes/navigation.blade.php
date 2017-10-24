@@ -35,30 +35,19 @@
           <i class="fa fa-group"></i> <span>Grupos</span>
         </a>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-bank"></i> <span>Cuentas</span>
-          <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+      <li>
+        <a href="{{ route('tickets') }}">
+          <i class="fa fa-list"></i> <span>Boletas</span>
         </a>
-        <ul class="treeview-menu">
-          <li><a href="{{ route('tickets') }}"><i class="fa fa-circle-o"></i> Boletas</a></li>
-          <li><a href=""><i class="fa fa-circle-o"></i> Deudas</a></li>
-          <li><a href=""><i class="fa fa-circle-o"></i> Personas</a></li>
-        </ul>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+      <li>
+        <a href="{{ route('bills') }}">
+          <i class="fa fa-user"></i>
+          <span>Deudas</span>
           <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <small class="label pull-right bg-red">{{ count($bills) }}</small>
             </span>
         </a>
-        <ul class="treeview-menu">
-          <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-          <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-        </ul>
       </li>
       <li class="treeview">
         <a href="#">
@@ -74,14 +63,6 @@
           <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
           <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
         </ul>
-      </li>
-      <li>
-        <a href="../widgets.html">
-          <i class="fa fa-th"></i> <span>Widgets</span>
-          <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
-            </span>
-        </a>
       </li>
       <li class="header">Relevante</li>
       <li><a href="#"><i class="fa fa-thumbs-up text-green"></i> <span>Activo: <strong>{{ number_format($activos->total_sales) }}</strong></span></a></li>

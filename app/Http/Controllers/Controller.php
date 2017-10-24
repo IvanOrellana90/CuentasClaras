@@ -22,29 +22,40 @@ class Controller extends BaseController
     public function __construct()
     {
         $this->middleware(function ($request, $next) {
+
             $this->user = Auth::user();
             $this->signed_in = Auth::check();
 
-            // Monto total de deudas
-            $pasivos = User::where('id', $this->user->id)
-                ->where('ticket_user.active','0')
-                ->join('ticket_user','ticket_user.user_id','=','users.id')
-                ->select(DB::raw('SUM(ticket_user.amount) as total_sales'))
-                ->first();
+           if($this->signed_in) {
+               // Monto total de deudas
+               $pasivos = User::where('id', $this->user->id)
+                   ->where('ticket_user.active','0')
+                   ->join('ticket_user','ticket_user.user_id','=','users.id')
+                   ->select(DB::raw('SUM(ticket_user.amount) as total_sales'))
+                   ->first();
 
-            if($pasivos->total_sales == "")
-                $pasivos->total_sales = 0;
+               if($pasivos->total_sales == "")
+                   $pasivos->total_sales = 0;
 
-            $activos = Ticket::where('tickets.user_id', $this->user->id)
-                ->where('ticket_user.active','0')
-                ->join('ticket_user','ticket_user.ticket_id','=','tickets.id')
-                ->select(DB::raw('SUM(ticket_user.amount) as total_sales'))
-                ->first();
+               $activos = Ticket::where('tickets.user_id', $this->user->id)
+                   ->where('ticket_user.active','0')
+                   ->join('ticket_user','ticket_user.ticket_id','=','tickets.id')
+                   ->select(DB::raw('SUM(ticket_user.amount) as total_sales'))
+                   ->first();
+
+               $bills = Ticket::join('ticket_user','ticket_user.ticket_id','=','tickets.id')
+                   ->where('ticket_user.user_id',Auth::id())
+                   ->where('tickets.user_id','!=',Auth::id())
+                   ->select('name','date','ticket_user.amount','ticket_user.active','tickets.user_id','tickets.group_id')
+                   ->get();
+
+               view()->share('bills', $bills);
+               view()->share('pasivos', $pasivos);
+               view()->share('activos', $activos);
+           }
 
             view()->share('signed_in', $this->signed_in);
             view()->share('user', $this->user);
-            view()->share('pasivos', $pasivos);
-            view()->share('activos', $activos);
 
             return $next($request);
         });

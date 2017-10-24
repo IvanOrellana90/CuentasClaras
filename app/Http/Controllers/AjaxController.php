@@ -19,14 +19,6 @@ class AjaxController extends Controller
             ->select('users.name','users.lastName','users.avatar','users.id')
             ->get();
 
-        $owner = Group::where('groups.id',$request->id)
-            ->join('users','users.id','=','groups.user_id')
-            ->select('users.name','users.lastName','users.avatar','users.id')
-            ->first();
-
-        $data->push($owner);
-
-
         return response()->json($data);//then sent this data to ajax success
     }
 

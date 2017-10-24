@@ -29,8 +29,7 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required'
+            'name' => 'required'
         ]);
 
         $titulo = "OPS!";
