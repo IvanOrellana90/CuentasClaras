@@ -7,67 +7,120 @@
 
     <!-- Main content -->
     <section class="content">
-      <!-- Info boxes -->
-      <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
-            <div class="info-box-content">
-              <span class="info-box-text">CPU Traffic</span>
-              <span class="info-box-number">90<small>%</small></span>
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Deudas Usuaios -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Activos</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <div class="box-body no-padding table-responsive">
+                            <table id="activosUsers-selection" class="table table-condensed table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th data-column-id="id" data-visible="false">ID</th>
+                                    <th data-column-id="name" data-align='center' data-formatter="name" data-header-align="center">Nombre</th>
+                                    <th data-column-id="total_sales" data-align='center' data-header-align="center">Total</th>
+                                    <th data-column-id="link" data-align='center' data-header-align="center" data-formatter="link" data-sortable="false">Acciones</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a href="{{ route('users') }}" class="uppercase">Ver Usuarios</a>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!--/.box -->
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <!-- /.col -->
+            <div class="col-md-4">
+                <!--Pasivos-->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Pasivos</h3>
 
-            <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
-              <span class="info-box-number">41,410</span>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <div class="box-body no-padding">
+                            <div class="box-body no-padding table-responsive">
+                                <table id="pasivosUsers-selection" class="table table-condensed table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th data-column-id="id" data-visible="false">ID</th>
+                                        <th data-column-id="name" data-align='center' data-formatter="name" data-header-align="center">Nombre</th>
+                                        <th data-column-id="total_sales" data-align='center' data-header-align="center">Total</th>
+                                        <th data-column-id="link" data-align='center' data-header-align="center" data-formatter="link" data-sortable="false">Acciones</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a href="javascript:void(0)" class="uppercase">View All Users</a>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!--/.box -->
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
+            <!-- /.col -->
+            <div class="col-md-4">
+                <!-- Deudas Grupos -->
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Grupos</h3>
 
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Sales</span>
-              <span class="info-box-number">760</span>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding table-responsive">
+                        <table id="groups-selection" class="table table-condensed table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th data-column-id="id" data-visible="false">ID</th>
+                                <th data-column-id="name" data-align='center' data-formatter="name" data-header-align="center">Nombre</th>
+                                <th data-column-id="total_sales" data-align='center' data-header-align="center">Total</th>
+                                <th data-column-id="link" data-align='center' data-header-align="center" data-formatter="link" data-sortable="false">Acciones</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a href="{{ route('groups') }}" class="uppercase">Ver Grupos</a>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!--/.box -->
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
-              <span class="info-box-number">2,000</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
       <!-- Main row -->
       <div class="row">
         <!-- Left col -->
@@ -174,14 +227,14 @@
             <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Inventory</span>
-              <span class="info-box-number">5,200</span>
+              <span class="info-box-text">Gastos</span>
+              <span class="info-box-number">{{ gastosTotales() }}</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 50%"></div>
               </div>
               <span class="progress-description">
-                    50% Increase in 30 Days
+                    Gastos en el mes de {{ date('F') }}
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -191,8 +244,8 @@
             <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Mentions</span>
-              <span class="info-box-number">92,050</span>
+              <span class="info-box-text">Boletas</span>
+              <span class="info-box-number">{{ count($user->ticketsBelong) }}</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 20%"></div>
@@ -242,97 +295,6 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
-      <div class="row">
-        <div class="col-md-4">
-          <!-- Deudas Grupos -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Grupos</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding table-responsive">
-                <table id="grid-selection" class="table table-condensed table-hover table-striped">
-                    <thead>
-                    <tr>
-                        <th data-column-id="sender" data-align='center' data-header-align="center">Nombre</th>
-                        <th data-column-id="received" data-align='center' data-header-align="center">Total</th>
-                        <th data-column-id="link" data-align='center' data-header-align="center" data-formatter="link" data-sortable="false">Acciones</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-              <a href="javascript:void(0)" class="uppercase">View All Users</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!--/.box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-4">
-          <!-- Deudas Usuaios -->
-          <div class="box box-warning">
-            <div class="box-header with-border">
-              <h3 class="box-title">Usuarios</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-
-              <!-- /.users-list -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-              <a href="javascript:void(0)" class="uppercase">View All Users</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!--/.box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-4">
-          <!-- ???? -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Latest Members</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-
-              <!-- /.users-list -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer text-center">
-              <a href="javascript:void(0)" class="uppercase">View All Users</a>
-            </div>
-            <!-- /.box-footer -->
-          </div>
-          <!--/.box -->
-        </div>
-        <!-- /.col -->
-      </div>
     </section>
     <!-- /.content -->
 
@@ -344,4 +306,79 @@
 @section('js')
     <script src="{{ URL::to('bower_components/bootgrid/dist/jquery.bootgrid.js') }}"></script>
     <script src="{{ URL::to('js/welcome.js') }}"></script>
+
+    <script>
+        $("#groups-selection").bootgrid({
+            ajax: true,
+            ajaxSettings: {
+                method: "GET",
+                cache: false
+            },
+            labels: {
+                noResults: "No se encontraron resultados",
+                infos: ""
+            },
+            url: "{!!URL::to('welcomeGroupTable')!!}",
+            navigation: 0,
+            formatters: {
+                "link": function(column, row)
+                {
+                    return "<a href=\"#\">" + column.id + "</a>";
+                },
+                "name" : function (column, row)
+                {
+                    return "<a href=\"{{ route('groups') }}\">" + row.name + "</a>";
+                }
+            }
+        });
+
+        $("#activosUsers-selection").bootgrid({
+            ajax: true,
+            ajaxSettings: {
+                method: "GET",
+                cache: false
+            },
+            labels: {
+                noResults: "No se encontraron resultados",
+                infos: ""
+            },
+            url: "{!!URL::to('welcomeActivosUserTable')!!}",
+            navigation: 0,
+            formatters: {
+                "link": function(column, row)
+                {
+                    return "<a href=\"#\">" + column.id + "</a>";
+                },
+                "name" : function (column, row)
+                {
+                    return "<a href=\"{{ route('groups') }}\">" + row.name + "</a>";
+                }
+            }
+        });
+
+        $("#pasivosUsers-selection").bootgrid({
+            ajax: true,
+            ajaxSettings: {
+                method: "GET",
+                cache: false
+            },
+            labels: {
+                noResults: "No se encontraron resultados",
+                infos: ""
+            },
+            url: "{!!URL::to('welcomePasivosUserTable')!!}",
+            navigation: 0,
+            formatters: {
+                "link": function(column, row)
+                {
+                    return "<a href=\"#\">" + column.id + "</a>";
+                },
+                "name" : function (column, row)
+                {
+                    return "<a href=\"{{ route('groups') }}\">" + row.name + "</a>";
+                }
+            }
+        });
+    </script>
+
 @endsection

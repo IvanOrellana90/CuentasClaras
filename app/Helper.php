@@ -2,6 +2,7 @@
 
 use App\Group;
 use App\Ticket;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 function formatNumber($number)
@@ -28,4 +29,15 @@ function activosGrupo($group_id)
         ->first();
 
     return $activos->total_sales;
+}
+
+function gastosTotales()
+{
+    $total = Ticket::join('ticket_user','ticket_user.ticket_id','=','tickets.id')
+        ->where('ticket_user.user_id',Auth::id())
+        ->where(DB::raw('MONTH(ticket_user.created_at)'),date('n'))
+        ->select(DB::raw('SUM(ticket_user.amount) as total_sales'))
+        ->first();
+
+    return number_format($total->total_sales);
 }

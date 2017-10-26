@@ -33,3 +33,6 @@ li > a.btn.btn-wd, .btn-wd {
     padding-top: 10px;
     padding-left: 0px;
 }
+.no-results {
+    text-align: center;
+}

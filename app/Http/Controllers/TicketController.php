@@ -82,7 +82,7 @@ class TicketController extends Controller
 
             $ticket->users()->attach($syncData);
 
-            Event::fire(new TicketAdded($ticket));
+            // Event::fire(new TicketAdded($ticket));
 
             $titulo = "Excelente!";
             $mensaje = "Boleta: ".$ticket->name." ingresada correctamente";

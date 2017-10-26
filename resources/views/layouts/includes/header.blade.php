@@ -95,16 +95,14 @@
                       <div class="col-xs-4 text-center">
                           <h5 class="text-red">{{ number_format($bill->amount) }}</h5>
                       </div>
-                      <div class="col-xs-6">
+                      <div class="col-xs-8">
                         <a href="#">
                           <h6 class="margin-bottom-none">
-                            {{ $bill->group->name }}
+                            {{ substr($bill->group->name,0,20) }}
                           </h6>
                         </a>
-                        <small>{{ $bill->name }}</small>
-                      </div>
-                      <div class="col-xs-2 text-center">
-                        <a href="#" class="text-green"><i class="fa fa-check"></i></a>
+                        <small>{{ substr($bill->name,0,24) }}... </small> <br>
+                        <small>{{ $bill->date }}</small> <br>
                       </div>
                     </div>
                   </li>

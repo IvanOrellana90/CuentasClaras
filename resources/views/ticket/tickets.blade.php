@@ -33,7 +33,7 @@
           <tr>
             <th  data-column-id="id" data-visible="false">ID</th>
             <th  data-column-id="email" data-visible="false">Email</th>
-              <th  data-column-id="borrarLink" data-visible="false">BorrarLink</th>
+            <th  data-column-id="borrarLink" data-visible="false">BorrarLink</th>
             <th  data-column-id="nombre" data-align='center' data-header-align="center">Nombre</th>
             <th  data-column-id="creador" data-align='center' data-header-align="center" data-formatter="creador">Creador</th>
             <th  data-column-id="fecha" data-align='center' data-header-align="center" data-order="asc">Fecha</th>
@@ -56,6 +56,7 @@
                 <td>{{ $tickets->date }}</td>
                 <td>{{ $tickets->amount }}</td>
                 <td>{{ $tickets->group->name }}</td>
+                <td>{{ $tickets->active }}</td>
             </tr>
           @endforeach
 

@@ -2,16 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Ticket;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
     public function users()
     {
+        $users = User::all();
+
+        $amigos = Group::join('group_user','group_user.group_id','=','groups.id')
+            ->where('group_user.user_id',Auth::id())
+            ->orWhere('')
+            ->get();
+
+        print_r($amigos);
+
 
     }
 

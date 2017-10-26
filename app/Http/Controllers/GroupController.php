@@ -80,8 +80,7 @@ class GroupController extends Controller
         $mensaje = "Ocurrio un problema!";
         $class = "error";
 
-        if($group->user->id != Auth::id())
-        {
+        if($group->user->id != Auth::id()) {
             $mensaje = "No puedes eliminar un grupo de otro usuario!";
             return redirect()->back()->with(['message' => $mensaje, 'class' => $class]);
         }

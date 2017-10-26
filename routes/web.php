@@ -44,3 +44,8 @@ Route::get('/user/destroy/{id}', 'UserController@destroy')->name('user.destroy')
 
 /* AJAX */
 Route::get('/findGroupUsers','AjaxController@findGroupUsers');
+
+/* JSON */
+Route::get('/welcomeGroupTable','AjaxController@welcomeGroupTable')->name('welcomeGroupTable')->middleware('auth');
+Route::get('/welcomePasivosUserTable','AjaxController@welcomePasivosUserTable')->name('welcomePasivosUserTable')->middleware('auth');
+Route::get('/welcomeActivosUserTable','AjaxController@welcomeActivosUserTable')->name('welcomeActivosUserTable')->middleware('auth');

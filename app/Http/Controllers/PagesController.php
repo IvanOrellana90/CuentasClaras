@@ -29,4 +29,6 @@ class PagesController extends Controller
             'bills' => $bills,
         ]);
     }
+
+
 }

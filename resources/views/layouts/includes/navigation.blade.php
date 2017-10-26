@@ -41,8 +41,14 @@
         </a>
       </li>
       <li>
-        <a href="{{ route('bills') }}">
+        <a href="{{ route('users') }}">
           <i class="fa fa-user"></i>
+          <span>Usuarios</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('bills') }}">
+          <i class="fa fa-bookmark"></i>
           <span>Deudas</span>
           <span class="pull-right-container">
               <small class="label pull-right bg-red">{{ count($bills) }}</small>
