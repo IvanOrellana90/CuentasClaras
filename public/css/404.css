@@ -1,0 +1,72 @@
+.nb-error {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 480px;
+    padding: 60px 30px;
+}
+
+.nb-error .error-code {
+    color: #2d353c;
+    font-size: 96px;
+    line-height: 100px;
+}
+
+.nb-error .error-desc {
+    font-size: 12px;
+    color: #647788;
+}
+.nb-error .input-group{
+    margin: 30px 0;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+a.btn.btn-primary {
+    min-width: 150px;
+}
+.row {
+    margin-top: 35px;
+}
+.col-lg-6 {
+    margin-bottom: 10px;
+}
+.img-noidea {
+    max-width: 60%;
+    border-radius: 50%;
+}

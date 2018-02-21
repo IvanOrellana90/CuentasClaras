@@ -1,0 +1,131 @@
+.actionPlus {
+    min-height: 40px;
+    color: #999;
+    background-color: whitesmoke;
+    border-color: #e6e6e6;
+}
+.wizard-header.text-center {
+    width: 100%;
+}
+.wizard-container {
+    padding-top: 0px;
+}
+section.dashboard-counts .icon {
+    line-height: 28px;
+}
+.modal-footer.text-center {
+    display: block;
+}
+#wizardProfile {
+    margin-bottom: 0px;
+}
+.img-circle.imgMontos {
+
+    max-height: 60px;
+}
+.text-menu {
+    padding: 10px 15px;
+}
+nav.side-navbar strong i {
+    font-size: 1.2em;
+    margin-right: 10px;
+    -webkit-transition: none;
+    transition: none;
+}
+span.fa.fa-trash-o {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: #ca7265;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+span.fa.fa-bullseye {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: #5b97c1;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+section {
+    padding: 20px;
+}
+div.bootgrid-footer.container-fluid>div.row {
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+div.bootgrid-header.container-fluid>div.row {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+.item.d-flex.align-items-center.table-responsive {
+    padding: 10px 0px;
+}
+div#table-ticket-header {
+    margin-top: 0px;
+}
+section.dashboard-header {
+    padding-top: 20px;
+}
+.shrinked i.fa.fa-thumbs-o-down {
+    display: none;
+}
+.notification-deuda {
+    text-align: center;
+}
+nav.navbar .dropdown-menu a small {
+     margin-left: 0px;
+    text-align: center;
+}
+nav.navbar .dropdown-menu a img {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.marginTop5 {
+    margin-top: 5px;
+}
+@media (max-width: 767px) {
+    .hidden-xs {
+        display: none !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .hidden-sm {
+        display: none !important;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hidden-md {
+        display: none !important;
+    }
+}
+@media (min-width: 1200px) {
+    .hidden-lg {
+        display: none !important;
+    }
+}
+p.descripcion-texto {
+    font-size: 13px;
+    padding: 0px;
+}
+.min-height {
+    min-height: 80vh;
+}
+span.fa.fa-check {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: #34ac4f;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+}
